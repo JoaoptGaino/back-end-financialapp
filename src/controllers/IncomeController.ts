@@ -31,6 +31,23 @@ export default class IncomeController {
         }
     }
 
+    async update(req:Request,res:Response){
+        const {id} = req.params;
+
+        const {
+            name,value
+        } = req.body;
+
+        const updateIncome = await db('income')
+        .where('id',id)
+        .update({name,value});
+
+        return res.json({
+            message:"Updated",
+            updateIncome
+        })
+
+    }
 
 
     async delete(req: Request, res: Response) {

@@ -13,6 +13,7 @@ routes.get('/', (req, res) => {
 });
 routes.get('/incomes',incomeController.index);
 routes.post('/incomes',incomeController.create);
+routes.put('/incomes/:id',incomeController.update);
 routes.delete('/incomes/:id',incomeController.delete);
 
 export default routes;
