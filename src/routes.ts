@@ -11,9 +11,14 @@ routes.get('/', (req, res) => {
         message: "Hello from routes"
     });
 });
+
+//INCOME
 routes.get('/incomes',incomeController.index);
 routes.post('/incomes',incomeController.create);
 routes.put('/incomes/:id',incomeController.update);
 routes.delete('/incomes/:id',incomeController.delete);
+
+
+//EXPENSES
 
 export default routes;

@@ -10,14 +10,20 @@ export default class IncomeController {
     async create(req: Request, res: Response) {
         const {
             name,
-            value
+            category_id,
+            value,
+            date,
+            register_date
         } = req.body;
         const trx = await db.transaction();
         try {
             await trx('income').insert(
                 {
                     name,
-                    value
+                    category_id,
+                    value,
+                    date,
+                    register_date
                 }
             );
             await trx.commit();
@@ -31,19 +37,19 @@ export default class IncomeController {
         }
     }
 
-    async update(req:Request,res:Response){
-        const {id} = req.params;
+    async update(req: Request, res: Response) {
+        const { id } = req.params;
 
         const {
-            name,value
+            name, value
         } = req.body;
 
         const updateIncome = await db('income')
-        .where('id',id)
-        .update({name,value});
+            .where('id', id)
+            .update({ name, value });
 
         return res.json({
-            message:"Updated",
+            message: "Updated",
             updateIncome
         })
 
